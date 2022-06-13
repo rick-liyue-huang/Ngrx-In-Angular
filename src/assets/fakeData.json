@@ -1,0 +1,18 @@
+{
+  "user": {
+    "email": "rick@h.com",
+    "token": "xxx xxx"
+  },
+  "post": [
+    {
+      "id": "1",
+      "title": "first one",
+      "description": "desc one"
+    },
+    {
+      "id": "2",
+      "title": "first two",
+      "description": "desc two"
+    }
+  ]
+}
