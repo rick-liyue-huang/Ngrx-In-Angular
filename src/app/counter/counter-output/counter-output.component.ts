@@ -26,6 +26,7 @@ export class CounterOutputComponent implements OnInit, OnDestroy {
       this.counter = data.counter;
     });
 
+    // also can put the observable in html and add deal with it
     this.counter$ = this.store.select('counter');
   }
 
