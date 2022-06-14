@@ -11,19 +11,14 @@ const routes: Routes = [
     path: '', component: HomeComponent
   },
   {
-    path: 'counter', component: CounterComponent
+    path: 'counter',
+    // lazy loading module
+    loadChildren: () => import('./counter/counter.module').then(m => m.CounterModule)
   },
   {
     path: 'posts',
-    component: PostListComponent,
-    children: [
-      {
-        path: 'add', component: AddPostComponent
-      },
-      {
-        path: 'edit/:id', component: EditPostComponent
-      }
-    ]
+    // lazy loading module
+    loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
   }
 ];
 
