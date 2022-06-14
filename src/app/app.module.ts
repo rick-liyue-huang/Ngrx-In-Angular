@@ -9,7 +9,7 @@ import { CounterButtonsComponent } from './counter/counter-buttons/counter-butto
 import {StoreModule} from "@ngrx/store";
 import {counterReducer} from "./counter/state/counter.reducers";
 import { CustomCounterInputComponent } from './counter/custom-counter-input/custom-counter-input.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
@@ -17,6 +17,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../environments/environment";
 import {postsReducers} from "./posts/state/posts.reducers";
 import {appReducer} from "./store";
+import { AddPostComponent } from './posts/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {appReducer} from "./store";
     CustomCounterInputComponent,
     HomeComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import {appReducer} from "./store";
     // import the store in the app module
     StoreModule.forRoot(appReducer),
     FormsModule,
+    ReactiveFormsModule, // for form control
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

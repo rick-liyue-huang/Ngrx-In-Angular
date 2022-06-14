@@ -3,6 +3,10 @@
 	<div class="col-md-12">
 		<h3>Posts</h3>
 		
+		<div>
+			<a href="#" class="btn btn-primary" [routerLink]="['/posts/add']">Add Post</a>
+		</div>
+		
 		<table class="table table-striped" *ngIf="posts$ | async as postData">
 			<thead>
 				<tr>
@@ -19,5 +23,10 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
+	
+	<div class="col-md-4">
+<!--		match with children routes-->
+		<router-outlet></router-outlet>
 	</div>
 </div>
