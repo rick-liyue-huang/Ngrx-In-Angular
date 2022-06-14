@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {CounterState} from "../state/counter.state";
 import {Observable, Subscription} from "rxjs";
 import {CounterComponent} from "../counter/counter.component";
+import {getCounter} from "../state/counter.selectors";
 
 @Component({
   selector: 'app-counter-output',
@@ -15,19 +16,28 @@ export class CounterOutputComponent implements OnInit, OnDestroy {
 
   counter: number = 0;
   counterSubscription: Subscription | undefined;
-  counter$: Observable<CounterState> | undefined;
+  counter$: Observable<number> | undefined;
 
   constructor(private store: Store<{counter: CounterState}>) { }
 
   ngOnInit(): void {
+    // this.counterSubscription = this.store
+    //   .select('counter')
+    //   .subscribe(data => {
+    //     console.log('counter observable called')
+    //   this.counter = data.counter;
+    // });
+
     this.counterSubscription = this.store
-      .select('counter')
-      .subscribe(data => {
-      this.counter = data.counter;
-    });
+      .select(getCounter)
+      .subscribe(counter => {
+        console.log('counter observable called')
+        this.counter = counter;
+      });
+
 
     // also can put the observable in html and add deal with it
-    this.counter$ = this.store.select('counter');
+    this.counter$ = this.store.select(getCounter);
   }
 
   // clear the subscription when destroy the component
