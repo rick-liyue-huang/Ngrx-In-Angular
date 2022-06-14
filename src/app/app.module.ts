@@ -13,6 +13,10 @@ import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {environment} from "../environments/environment";
+import {postsReducers} from "./posts/state/posts.reducers";
+import {appReducer} from "./store";
 
 @NgModule({
   declarations: [
@@ -29,8 +33,13 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     BrowserModule,
     AppRoutingModule,
     // import the store in the app module
-    StoreModule.forRoot({counter: counterReducer}),
-    FormsModule
+    StoreModule.forRoot(appReducer),
+    FormsModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
