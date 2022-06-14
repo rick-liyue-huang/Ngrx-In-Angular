@@ -4,6 +4,7 @@ import {Post} from "../../models/posts.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store";
 import {addPost} from "../state/posts.actions";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-post',
@@ -14,7 +15,7 @@ export class AddPostComponent implements OnInit {
 
   postForm: FormGroup;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -39,6 +40,8 @@ export class AddPostComponent implements OnInit {
     this.store.dispatch(addPost({post}));
     this.postForm.controls['title'].setValue('');
     this.postForm.controls['description'].setValue('');
+
+    this.router.navigate(['posts']);
   }
 
   onShowDescriptionErrors() {
