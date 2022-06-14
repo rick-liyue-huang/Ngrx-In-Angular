@@ -18,6 +18,7 @@ import {environment} from "../environments/environment";
 import {postsReducers} from "./posts/state/posts.reducers";
 import {appReducer} from "./store";
 import { AddPostComponent } from './posts/add-post/add-post.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddPostComponent } from './posts/add-post/add-post.component';
     HomeComponent,
     HeaderComponent,
     PostListComponent,
-    AddPostComponent
+    AddPostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
