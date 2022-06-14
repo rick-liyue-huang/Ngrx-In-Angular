@@ -5,7 +5,7 @@ import {postsReducers} from "../posts/state/posts.reducers";
 
 
 // combine the states to root
-export interface Index {
+export interface AppState {
 	counter: CounterState,
 	posts: PostsStates
 }
