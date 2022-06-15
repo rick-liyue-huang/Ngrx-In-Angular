@@ -1,27 +1,56 @@
 # NgrxProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+Ngrx Effects library
 
-## Development server
+library manages side effects to keep components clean
+side effects means calling to the external state like API
+using HTTP to get data from backend server is nothing but a side effect
+having this logic in the components we can manage this code in the ngrx effects architecture
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+we cannot call the http and the store in the components as we want to keep them clean
+we cannot also call the http in the reducer as the reducer functions are pure functions
+we cannot inject the postsService into the reducers as they are pure function
+so the best place to manage these side effects are the ngrx effects
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+what ngrx effects does?
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+effects take the action, does some work and again dispatches new action
+this could be success or the fail action
+lets see the ngrx diagram with effects taking into consideration
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Defining an effects
 
-## Running end-to-end tests
+effect is nothing but creating a service, in fact it is just like any other angular service class defined with @injectable decorator at the top of class
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```typescript
+import {Injectable} from "@angular/core";
+import {Actions, createEffect} from "@angular/effects"
+import {ofType} from 'rxjs/operators';
 
-## Further help
+@Injectable()
+export class AuthEffects {
+	constructor(private actions$: Actions, private loginService: LoginService) {
+	}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+	loadPosts$ = createEffect(() => {
+		return this.actions$.pipe(ofType(loginAction))
+	});
+}
+```
+
+Create Variable that will create an effect
+actions$ -> injected actions from ngrx effects
+ofType -> to filter all the actions with the loginAction
+
+when ever the login action is dispatched, this effect will execute by passing through this filter
+
+Whenever the login action is dispatched then it is passed through the mergeMap operator, mergeMap maps over each emitted action and calls the angular while returns the observable and then merge this observable into single observable or stream.
+
+```typescript
+mergeMap((action) => {
+	return this.logginService.login().pipe(map((data) => posts.loadPostsSuccess({data})))
+})
+```
