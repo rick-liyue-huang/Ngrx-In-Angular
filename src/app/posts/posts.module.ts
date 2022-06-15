@@ -6,7 +6,7 @@ import {AddPostComponent} from "./add-post/add-post.component";
 import {EditPostComponent} from "./edit-post/edit-post.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {StoreModule} from "@ngrx/store";
-import {postsReducers} from "./state/posts.reducers";
+import {postsReducer} from "./state/posts.reducers";
 import {POST_STATE_NAME} from "./state/posts.selectors";
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
 		RouterModule.forChild(routes),
 		ReactiveFormsModule, // for form control
 		// lazy loading the posts state
-		StoreModule.forFeature(POST_STATE_NAME, postsReducers)
+		StoreModule.forFeature(POST_STATE_NAME, postsReducer)
 	]
 })
 export class PostsModule {

@@ -10,19 +10,23 @@ import {environment} from "../environments/environment";
 import {appReducer} from "./store";
 import {EffectsModule} from "@ngrx/effects";
 import {HttpClientModule} from "@angular/common/http";
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // import the store in the app module, here just leave empty object, and lazy loading state in itself module
-    StoreModule.forRoot({}),
+    // @ts-ignore
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
