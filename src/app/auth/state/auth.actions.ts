@@ -1,4 +1,5 @@
 import {createAction, props} from "@ngrx/store";
+import {UserModel} from "../../models/user.model";
 
 
 export const LOGIN_START = '[auth page] login start';
@@ -17,6 +18,7 @@ export const loginStart  = createAction(
 
 export const loginSuccess = createAction(
 	LOGIN_SUCCESS,
+	props<{user: UserModel}>()
 );
 
 export const loginFail = createAction(
