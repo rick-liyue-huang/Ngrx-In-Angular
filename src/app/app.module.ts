@@ -19,8 +19,8 @@ import {appReducer} from "./store";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // import the store in the app module
-    StoreModule.forRoot(appReducer),
+    // import the store in the app module, here just leave empty object, and lazy loading state in itself module
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
