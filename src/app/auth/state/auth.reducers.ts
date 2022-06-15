@@ -1,5 +1,5 @@
 
-import {initialState} from './auth.states';
+import {initialState} from './auth.state';
 import {createReducer} from "@ngrx/store";
 
 const _authReducer = createReducer(initialState);

@@ -8,6 +8,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../environments/environment";
 import {appReducer} from "./store";
+import {EffectsModule} from "@ngrx/effects";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -26,6 +28,10 @@ import {appReducer} from "./store";
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
+    // using ngrx effects, and the detail usage in auth.module.ts
+    EffectsModule.forRoot([]),
+    // using it in service httpClient
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

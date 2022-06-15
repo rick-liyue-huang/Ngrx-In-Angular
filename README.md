@@ -54,3 +54,14 @@ mergeMap((action) => {
 	return this.logginService.login().pipe(map((data) => posts.loadPostsSuccess({data})))
 })
 ```
+
+
+create realtime database in firebase 'ngrx-project' and use postman to post the json to `https://ngrx-project-6a3bb-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json` to insert the record to mongodb
+
+deal with the authentication and user management in rest : 'https://firebase.google.com/docs/reference/rest/auth'
+
+`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=[API_KEY]`
+
+here notice: this action will be used in two parts: 1st the effects to connect with service on firebase, 2nd the component by store dispatch. 
+
+

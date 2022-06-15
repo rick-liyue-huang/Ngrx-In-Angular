@@ -1,5 +1,5 @@
 import {CounterState} from "../counter/state/counter.state";
-import {PostsStates} from "../posts/state/posts.states";
+import {PostsState} from "../posts/state/posts.state";
 import {counterReducer} from "../counter/state/counter.reducers";
 import {postsReducers} from "../posts/state/posts.reducers";
 
@@ -7,7 +7,7 @@ import {postsReducers} from "../posts/state/posts.reducers";
 // combine the states to root
 export interface AppState {
 	counter: CounterState,
-	posts: PostsStates
+	posts: PostsState
 }
 
 
