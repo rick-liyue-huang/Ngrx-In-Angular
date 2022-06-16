@@ -7,6 +7,7 @@ import {authReducer} from "../auth/state/auth.reducers";
 import {SharedState} from './shared/shared.state';
 import {sharedReducer} from "./shared/shared.reducer";
 import {SHARED_STATE_NAME} from "./shared/shared.selector";
+import {AUTH_STATE_NAME} from "../auth/state/auth.selectors";
 
 
 // combine the states to root
@@ -16,7 +17,8 @@ export interface AppState {
 	// posts: PostsState,
 	// auth: AuthState,
 	// shared: SharedState
-	[SHARED_STATE_NAME]: SharedState
+	[SHARED_STATE_NAME]: SharedState,
+	[AUTH_STATE_NAME]: AuthState
 }
 
 
@@ -26,5 +28,6 @@ export const appReducer = {
 	// posts: postsReducer,
 	// auth: authReducer,
 	// shared: sharedReducer
-	[SHARED_STATE_NAME]: sharedReducer
+	[SHARED_STATE_NAME]: sharedReducer,
+	[AUTH_STATE_NAME]: authReducer
 }

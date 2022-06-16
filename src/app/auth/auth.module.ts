@@ -30,7 +30,7 @@ const routes: Routes = [
 		CommonModule,
 		ReactiveFormsModule,
 		RouterModule.forChild(routes),
-		StoreModule.forFeature(AUTH_STATE_NAME, authReducer),
+		// StoreModule.forFeature(AUTH_STATE_NAME, authReducer), // remove to store/index.ts for login/logout
 		EffectsModule.forFeature([AuthEffects]), // the detail usage in single module
 	]
 })
